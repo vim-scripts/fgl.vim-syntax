@@ -1,16 +1,7 @@
-""""""""""""""""""""""""""""""""""""""""""""""
-" Tim Kim
-" July, 9, 2008 
-" cool.msg@hotmail.com
-"
-" This script should be inserted into fgl.vim
-" (after the line where fglComment is defined
-"
-"""""""""""""""""""""""""""""""""""""""""""""
 
 syn cluster NofglFold contains=fglComment,fglString
 
-"function"
+"function
 syn region FglFunctionFold
       \ start="^\s*function .*$"
       \ skip=/^\s*\(#.*\)*$/
@@ -30,7 +21,7 @@ syn region FglCaseFold
 syn region fglWhenFold 
       \ start="^\s*\(when .*\|otherwise\)\s*$"
       \ skip=/^\s*\(#.*\)*$/
-      \ end="^\s*\(when .*\|otherwise\|end case\|\)\s*$"ms=s-1,me=s-1
+      \ end="^\s*\(when .*\|otherwise\|end case\)\s*$"ms=s-1,me=s-1
       \ transparent fold
       \ keepend 
       \ containedin=FglCaseFold 
@@ -66,26 +57,26 @@ syn region fglIfFoldContainer
       \ transparent fold
       \ keepend extend
       \ containedin=ALLBUT, @NoFglFold
-      \ contains=NONE
-"if"
-syn region fglIfFold
-      \ start="^\s*if .*$"
-      \ skip=/^\s*\(#.*\)*$/
-      \ end="^\s*else"ms=s-1,me=s-1
-      \ transparent fold
-      \ keepend 
-      \ contained containedin=fglIfFoldContainer
-      \ nextgroup=fglFoldElse
-      \ contains=TOP
-"else"
-syn region fglFoldElse
-      \ start="^\s*else"
-      \ skip=/^\s*\(#.*\)*$/
-      \ end="^\s*end if"
-      \ transparent fold
-      \ keepend 
-      \ contained containedin=fglIfFoldContainer
-      \ contains=TOP
+"      \ contains=NONE
+""if
+"syn region fglIfFold
+"      \ start="^\s*if .*$"
+"      \ skip=/^\s*\(#.*\)*$/
+"      \ end="^\s*else"ms=s-1,me=s-1
+"      \ transparent fold
+"      \ keepend 
+"      \ contained containedin=fglIfFoldContainer
+"      \ nextgroup=fglFoldElse
+"      \ contains=TOP
+""else"
+"syn region fglFoldElse
+"      \ start="^\s*else"
+"      \ skip=/^\s*\(#.*\)*$/
+"      \ end="^\s*end if"
+"      \ transparent fold
+"      \ keepend 
+"      \ contained containedin=fglIfFoldContainer
+"      \ contains=TOP
 
 "input  ----------------------------------------------"
 syn region fglInputFold
@@ -93,13 +84,13 @@ syn region fglInputFold
       \ skip=/^\s*\(#.*\)*$/
       \ end="^\s*end input"
       \ transparent fold
-      \ keepend 
+      \ keepend extend 
       \ containedin=ALLBUT, @NoFglFold
 "before|after|on"
 syn region fglInputSubGrpFold 
       \ start="^\s*\(before\|after\|on\) .*$"
       \ skip=/^\s*\(#.*\)*$/
-      \ end="^\s*\(before .*\|after .*\|on .*\)\s*$"ms=s-1,me=s-1
+      \ end="^\s*\(before \|after \|on \).*\s*$"ms=s-1,me=s-1
       \ transparent fold
       \ keepend 
       \ containedin=FglInputFold 
@@ -120,3 +111,4 @@ syn region FglGlobalsFold
       \ keepend 
       \ contains=fglDefineFold
       \ containedin=NONE
+
