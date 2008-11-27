@@ -221,7 +221,7 @@ syn region fglInputFold
 syn region fglInputSubGrpFold 
       \ start="^\s*\(before\|after\|on\) .*$"
       \ skip=/^\s*\(#.*\)*$/
-      \ end="^\s*\(before \|after \|on \|end input\|display \).*\s*$"ms=s-1,me=s-1
+      \ end="^\s*\(before \|after \|on \|end input\).*\s*$"ms=s-1,me=s-1
       \ transparent fold
       \ keepend 
       \ containedin=FglInputFold 
@@ -229,10 +229,10 @@ syn region fglInputSubGrpFold
 syn region fglDisplaySubGrpFold 
       \ start="^\s*\(before\|after\|on\) .*$"
       \ skip=/^\s*\(#.*\)*$/
-      \ end="^\s*\(before \|after \|on \|end display\|input \).*\s*$"ms=s-1,me=s-1
+      \ end="^\s*\(before \|after \|on \|end \).*\s*$"ms=s-1,me=s-1
       \ transparent fold
       \ keepend 
-      \ containedin=FglDisplayFold 
+      \ containedin=FglFunctionFold 
 
 "report ----------------------------------------------"
 syn region FglReportFold
@@ -289,7 +289,6 @@ if version >= 508 || !exists("did_fgl_syntax_inits")
   HiLink fglStatement	Statement
   HiLink fglString	String
   HiLink fglType	Type
-"  HiLink personal	TODO "to highlight timk in log
 
   delcommand HiLink
 endif
