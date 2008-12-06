@@ -181,7 +181,7 @@ syn region FglForeachFold
 syn region fglIfFoldContainer
       \ start="^\s*if .*$"
       \ skip=/^\s*\(#.*\)*$/
-      \ end="^\s*end if"
+      \ end="^\s*end\s*if"
       \ transparent fold
       \ keepend extend
       \ containedin=ALLBUT, @NoFglFold
@@ -202,7 +202,7 @@ syn region fglIfFold
 syn region fglFoldElse
       \ start="^\s*else"
       \ skip=/^\s*\(#.*\)*$/
-      \ end="^\s*end if"ms=s-1,me=s-1
+      \ end="^\s*end\s*if"ms=s-1,me=s-1
       \ transparent fold
       \ keepend 
       \ contained containedin=fglIfFoldContainer
@@ -212,7 +212,7 @@ syn region fglFoldElse
 syn region fglInputFold
       \ start="^\s*input .*$"
       \ skip=/^\s*\(#.*\)*$/
-      \ end="^\s*end input"
+      \ end="^\s*end\s*input"
       \ transparent fold
       \ keepend extend 
       \ containedin=ALLBUT, @NoFglFold
@@ -229,7 +229,7 @@ syn region fglInputSubGrpFold
 syn region fglDisplaySubGrpFold 
       \ start="^\s*\(before\|after\|on\) .*$"
       \ skip=/^\s*\(#.*\)*$/
-      \ end="^\s*\(before \|after \|on \|end \).*\s*$"ms=s-1,me=s-1
+      \ end="^\s*\(before \|after \|on \|end display\).*\s*$"ms=s-1,me=s-1
       \ transparent fold
       \ keepend 
       \ containedin=FglFunctionFold 
@@ -246,7 +246,7 @@ syn region FglReportFold
 syn region fglReportSubGrpFold 
       \ start="^\s*\(before\|after\|on\|page\|first\|last\) .*$"
       \ skip=/^\s*\(#.*\)*$/
-      \ end="^\s*\(before\|after\|on\|page\|first\|last\) .*\s*$"ms=s-1,me=s-1
+      \ end="^\s*\(before\|after\|on\|page\|first\|last\|end\) .*\s*$"ms=s-1,me=s-1
       \ transparent fold
       \ keepend 
       \ containedin=FglReportFold 
